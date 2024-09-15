@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "airconditions")
+@Table(name = "AirConditions")
 @AllArgsConstructor
 @NoArgsConstructor
 public class AirCondition extends Device {
