@@ -1,5 +1,6 @@
 package com.aposiamp.smartlivingservice.resources;
 
+import com.aposiamp.smartlivingservice.enums.DeviceType;
 import com.aposiamp.smartlivingservice.models.Device;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -25,4 +26,18 @@ public class DeviceResource {
         return Response.ok(device).build();
     }
 
+    @GET
+    @Path("/id-and-type/{id}/{type}")
+    public Response getDeviceByIdAndType(@PathParam("id") String id, @PathParam("type") DeviceType type) {
+        Device device = Device.<Device>listAll().stream()
+                .filter(d -> d.getId().equals(id) && d.getType() == type)
+                .findFirst()
+                .orElse(null);
+
+        if (device == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(device).build();
+    }
 }
