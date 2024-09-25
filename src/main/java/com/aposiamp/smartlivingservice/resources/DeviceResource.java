@@ -1,5 +1,7 @@
 package com.aposiamp.smartlivingservice.resources;
 
+import com.aposiamp.smartlivingservice.dto.DeviceModeDto;
+import com.aposiamp.smartlivingservice.dto.DeviceStateDto;
 import com.aposiamp.smartlivingservice.enums.DeviceType;
 import com.aposiamp.smartlivingservice.models.Device;
 import com.aposiamp.smartlivingservice.services.DeviceService;
@@ -45,33 +47,15 @@ public class DeviceResource {
 
     @PATCH
     @Path("/{id}/state")
-    public Response updateState(@PathParam("id") String id, String newStateString) {
-
-        try {
-            deviceService.updateState(id, newStateString);
-        } catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(e.getMessage())
-                    .type(MediaType.APPLICATION_JSON)
-                    .build();
-        }
-
+    public Response updateState(@PathParam("id") String id, DeviceStateDto deviceStateDto) {
+        deviceService.updateState(id, deviceStateDto);
         return Response.noContent().build();
     }
 
     @PATCH
     @Path("/{id}/mode")
-    public Response updateMode(@PathParam("id") String id, String newModeString) {
-
-        try {
-            deviceService.updateMode(id, newModeString);
-        } catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(e.getMessage())
-                    .type(MediaType.APPLICATION_JSON)
-                    .build();
-        }
-
+    public Response updateMode(@PathParam("id") String id, DeviceModeDto deviceModeDto) {
+        deviceService.updateMode(id, deviceModeDto);
         return Response.noContent().build();
     }
 }
