@@ -1,8 +1,11 @@
 package com.aposiamp.smartlivingservice.services;
 
+import com.aposiamp.smartlivingservice.dto.DeviceModeDto;
+import com.aposiamp.smartlivingservice.dto.DeviceStateDto;
 import com.aposiamp.smartlivingservice.enums.DeviceMode;
 import com.aposiamp.smartlivingservice.enums.DeviceState;
 import com.aposiamp.smartlivingservice.enums.DeviceType;
+import com.aposiamp.smartlivingservice.exceptions.FieldValidationException;
 import com.aposiamp.smartlivingservice.models.Device;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -27,13 +30,13 @@ public class DeviceService {
     }
 
     @Transactional
-    public void updateState(String id, String newStateString) throws IllegalArgumentException {
+    public void updateState(String id, DeviceStateDto deviceStateDto) {
 
         DeviceState newState;
         try {
-            newState = DeviceState.valueOf(newStateString);
+            newState = DeviceState.valueOf(deviceStateDto.getDeviceState());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid DeviceState. Value: " + newStateString);
+            throw new FieldValidationException("Invalid DeviceState. Value: " + deviceStateDto.getDeviceState());
         }
 
         Device device = Device.findById(id);
@@ -44,13 +47,13 @@ public class DeviceService {
     }
 
     @Transactional
-    public void updateMode(String id, String newModeString) throws IllegalArgumentException {
+    public void updateMode(String id, DeviceModeDto deviceModeDto) {
 
         DeviceMode newMode;
         try {
-            newMode = DeviceMode.valueOf(newModeString);
+            newMode = DeviceMode.valueOf(deviceModeDto.getDeviceMode());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid DeviceMode. Value: " + newModeString);
+            throw new FieldValidationException("Invalid DeviceMode. Value: " + deviceModeDto.getDeviceMode());
         }
 
         Device device = Device.findById(id);
@@ -60,15 +63,12 @@ public class DeviceService {
 
     }
 
-    private void update(Device device) throws IllegalArgumentException {
+    public void update(Device device) {
         Set<ConstraintViolation<Device>> violations = validator.validate(device);
 
         if (!violations.isEmpty()) {
-            String errors = violations.stream()
-                    .map(ConstraintViolation::getMessage)
-                    .collect(Collectors.joining());
-
-            throw new IllegalArgumentException(errors);
+            String errors = violations.stream().map(ConstraintViolation::getMessage).collect(Collectors.joining());
+            throw new FieldValidationException(errors);
         }
 
         device.persist();
