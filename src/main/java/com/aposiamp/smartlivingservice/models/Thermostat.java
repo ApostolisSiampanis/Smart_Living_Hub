@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "Thermostats")
+@Table(name = "thermostats")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Thermostat extends Device {
