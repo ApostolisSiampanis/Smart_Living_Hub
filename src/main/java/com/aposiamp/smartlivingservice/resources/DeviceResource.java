@@ -1,7 +1,9 @@
 package com.aposiamp.smartlivingservice.resources;
 
+import com.aposiamp.smartlivingservice.dto.DeviceHistoryDto;
 import com.aposiamp.smartlivingservice.dto.DeviceModeDto;
 import com.aposiamp.smartlivingservice.dto.DeviceStateDto;
+import com.aposiamp.smartlivingservice.enums.DeviceState;
 import com.aposiamp.smartlivingservice.enums.DeviceType;
 import com.aposiamp.smartlivingservice.models.Device;
 import com.aposiamp.smartlivingservice.services.DeviceService;
@@ -48,8 +50,17 @@ public class DeviceResource {
     @PATCH
     @Path("/{id}/state")
     public Response updateState(@PathParam("id") String id, DeviceStateDto deviceStateDto) {
-        deviceService.updateState(id, deviceStateDto);
-        return Response.noContent().build();
+        Device updatedDevice = deviceService.updateState(id, deviceStateDto);
+
+        Response response;
+        if (updatedDevice.getState() == DeviceState.OFF && updatedDevice.getTurnedOnAt() != null) {
+            DeviceHistoryDto deviceHistoryDto = deviceService.calculatePowerConsumption(updatedDevice.getId());
+            response = Response.ok(deviceHistoryDto).build();
+        } else {
+            response = Response.noContent().build();
+        }
+
+        return response;
     }
 
     @PATCH
