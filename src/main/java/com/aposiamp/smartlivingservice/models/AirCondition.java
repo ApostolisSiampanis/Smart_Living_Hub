@@ -26,8 +26,4 @@ public class AirCondition extends Device {
     @Min(value = 16)
     @Max(value = 30)
     private Integer temperature;
-    @NotNull
-    @Min(value = 0)
-    @Max(value = 3500)
-    private Integer powerConsumption;
 }
