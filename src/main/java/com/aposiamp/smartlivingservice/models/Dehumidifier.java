@@ -22,8 +22,4 @@ public class Dehumidifier extends Device {
     @Min(value = 0)
     @Max(value = 5)
     private Integer fanSpeed;
-    @NotNull
-    @Min(value = 0)
-    @Max(value = 650)
-    private Integer powerConsumption;
 }
