@@ -26,7 +26,7 @@ public class DeviceInitializer {
             AirCondition ac1 = new AirCondition();
             ac1.setId("AC-5267");
             ac1.setType(DeviceType.AIR_CONDITIONER);
-            ac1.setState(DeviceState.ON);
+            ac1.setState(DeviceState.OFF);
             ac1.setMode(DeviceMode.HEAT);
             ac1.setAirDirection(1);
             ac1.setFanSpeed(2);
@@ -51,7 +51,7 @@ public class DeviceInitializer {
             AirCondition ac3 = new AirCondition();
             ac3.setId("AC-7489");
             ac3.setType(DeviceType.AIR_CONDITIONER);
-            ac3.setState(DeviceState.ON);
+            ac3.setState(DeviceState.OFF);
             ac3.setMode(DeviceMode.DRY);
             ac3.setAirDirection(2);
             ac3.setFanSpeed(3);
@@ -80,15 +80,17 @@ public class DeviceInitializer {
             t1.setState(DeviceState.OFF);
             t1.setMode(DeviceMode.COOL);
             t1.setTemperature(20);
+            t1.setPowerConsumption(5);
 
             t1.persist();
 
             Thermostat t2 = new Thermostat();
             t2.setId("TH-2345");
             t2.setType(DeviceType.THERMOSTAT);
-            t2.setState(DeviceState.ON);
+            t2.setState(DeviceState.OFF);
             t2.setMode(DeviceMode.HEAT);
             t2.setTemperature(25);
+            t2.setPowerConsumption(8);
 
             t2.persist();
 
@@ -98,6 +100,7 @@ public class DeviceInitializer {
             t3.setState(DeviceState.OFF);
             t3.setMode(DeviceMode.AUTO);
             t3.setTemperature(22);
+            t3.setPowerConsumption(10);
 
             t3.persist();
         }
@@ -117,7 +120,7 @@ public class DeviceInitializer {
             Dehumidifier d2 = new Dehumidifier();
             d2.setId("DEH-9832");
             d2.setType(DeviceType.DEHUMIDIFIER);
-            d2.setState(DeviceState.ON);
+            d2.setState(DeviceState.OFF);
             d2.setMode(DeviceMode.AUTO);
             d2.setHumidityLevel(60);
             d2.setFanSpeed(4);
@@ -139,7 +142,7 @@ public class DeviceInitializer {
             Dehumidifier d4 = new Dehumidifier();
             d4.setId("DEH-1054");
             d4.setType(DeviceType.DEHUMIDIFIER);
-            d4.setState(DeviceState.ON);
+            d4.setState(DeviceState.OFF);
             d4.setMode(DeviceMode.HUMIDITY);
             d4.setHumidityLevel(70);
             d4.setFanSpeed(0);
