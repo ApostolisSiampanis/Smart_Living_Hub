@@ -1,5 +1,6 @@
 package com.aposiamp.smartlivingservice.services;
 
+import com.aposiamp.smartlivingservice.dto.DeviceHistoryDto;
 import com.aposiamp.smartlivingservice.dto.DeviceModeDto;
 import com.aposiamp.smartlivingservice.dto.DeviceStateDto;
 import com.aposiamp.smartlivingservice.enums.DeviceMode;
@@ -13,6 +14,8 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,7 +33,7 @@ public class DeviceService {
     }
 
     @Transactional
-    public void updateState(String id, DeviceStateDto deviceStateDto) {
+    public Device updateState(String id, DeviceStateDto deviceStateDto) {
 
         DeviceState newState;
         try {
@@ -40,10 +43,18 @@ public class DeviceService {
         }
 
         Device device = Device.findById(id);
+
+        if (device.getState() == newState) return device;
+
+        if (newState == DeviceState.ON) {
+            device.setTurnedOnAt(Instant.now());
+        }
+
         device.setState(newState);
 
         update(device);
 
+        return device;
     }
 
     @Transactional
@@ -61,6 +72,29 @@ public class DeviceService {
 
         update(device);
 
+    }
+
+    @Transactional
+    public DeviceHistoryDto calculatePowerConsumption(String id) {
+        Device device = Device.findById(id);
+
+        Instant now = Instant.now();
+
+        DeviceHistoryDto deviceHistoryDto = DeviceHistoryDto.builder()
+                .deviceId(device.getId())
+                .startTime(device.getTurnedOnAt())
+                .endTime(now)
+                .powerConsumption(
+                        (Duration.between(
+                                device.getTurnedOnAt(),
+                                now
+                        ).toSeconds() * device.getPowerConsumption()) / (1000.0 * 3600)
+                )
+                .build();
+
+        device.setTurnedOnAt(null);
+        update(device);
+        return deviceHistoryDto;
     }
 
     public void update(Device device) {
