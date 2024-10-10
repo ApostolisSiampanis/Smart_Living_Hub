@@ -1,61 +1,30 @@
-# smartlivingservice
+# Smart Living Smart Hub
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Project Overview
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+The Smart_Living_Hub repository contains a Java-based hub simulation that mimics the behavior of various smart devices in a home environment. Built using the Quarkus framework, the hub simulates API interactions with these devices, allowing the mobile app to control, monitor and update the status of each device. The hub acts as an intermediary between the smart devices and the Android application, ensuring seamless communication and real-time updates in response to user actions.
 
-## Running the application in dev mode
+## Key Features
 
-You can run your application in dev mode that enables live coding using:
+- **Smart Device Simulation:** The hub provides simulated APIs for a wide range of smart devices, allowing users to control devices such as thermostats, air conditions and dehumidifiers from the mobile app without needing physical devices for testing.
+- **API Access:** The mobile app communicates with the simulated hub through API requests. This enables device management (e.g. turning on/off, adjusting settings) and the retrieval of device statuses for monitoring purposes.
+- **Real-time Device Status Updates:** The hub updates each device's status based on user requests and interactions via the mobile app. For example, if a user changes the thermostat setting or turn off a dehumidifier, the hub reflects these changes and updates the device's state accordingly in the simulated environment.
+- **Quarkus Framework:** The hub leverages Quarkus for fast startup times, low memory usage, and reactive architecture, ensuring it is well-suited for cloud-native microservices. This allows the hub to handle multiple API requests efficiently while simulating real-time device control.
+- **PostgreSQL Integration:** A PostgreSQL database is used to store device state data, logs and any interactions with the hub. This provides a persistent record of device operations, which can be queried by the Android app for monitoring and energy tracking purposes.
 
-```shell script
-./mvnw compile quarkus:dev
-```
+## Dependencies
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+The Smart_Living_Hub project relies on several essential libraries and frameworks, each serving a specific role in building the application. Below is a summary of the main dependencies used in this project:
 
-## Packaging and running the application
+### Core Dependencies
+1. **Quarkus Framework**
+    - **quarkus-rest:** Provides RESTful APIs, enabling the application to expose endpoints for device interactions.
+    - **quarkus-rest-jackson:** Adds support for JSON serialization and deserialization using Jackson.
+    - **quarkus-hibernate-orm-panache:** Simplifies database interactions and ORM mapping using Panache with Hibernate.
+    - 
+2. 
 
-The application can be packaged using:
 
-```shell script
-./mvnw package
-```
+## License
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/smartlivingservice-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
