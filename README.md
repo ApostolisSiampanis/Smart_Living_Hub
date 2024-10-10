@@ -21,9 +21,13 @@ The Smart_Living_Hub project relies on several essential libraries and framework
     - **quarkus-rest:** Provides RESTful APIs, enabling the application to expose endpoints for device interactions.
     - **quarkus-rest-jackson:** Adds support for JSON serialization and deserialization using Jackson.
     - **quarkus-hibernate-orm-panache:** Simplifies database interactions and ORM mapping using Panache with Hibernate.
-    - 
-2. 
-
+    - **quarkus-jdbc-postgresql:** Enables the application to connect to a PostgreSQL database for storing and retrieving device data.
+    - **quarkus-hibernate-validator:** Intregrates validation features (e.g. input validation) within the application.
+    - **quarkus-arc:** Provides dependency injection support essential for building loosely coupled services in Quarkus.
+2. **PostgreSQL**
+    - **quarkus-jdbc-postgresql:** A JDBC driver that allows the application to interact with PostgreSQL databases.
+3. **Lombok**
+    - **lombok:** A utility library that reduces boilerplacte code (e.g. getters, setters, constructors) by using annotations. It helps improve code readability and maintainability.
 
 ## License
 
