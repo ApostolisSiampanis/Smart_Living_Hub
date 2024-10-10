@@ -21,13 +21,21 @@ The Smart_Living_Hub project relies on several essential libraries and framework
     - **quarkus-rest:** Provides RESTful APIs, enabling the application to expose endpoints for device interactions.
     - **quarkus-rest-jackson:** Adds support for JSON serialization and deserialization using Jackson.
     - **quarkus-hibernate-orm-panache:** Simplifies database interactions and ORM mapping using Panache with Hibernate.
-    - **quarkus-jdbc-postgresql:** Enables the application to connect to a PostgreSQL database for storing and retrieving device data.
     - **quarkus-hibernate-validator:** Intregrates validation features (e.g. input validation) within the application.
     - **quarkus-arc:** Provides dependency injection support essential for building loosely coupled services in Quarkus.
 2. **PostgreSQL**
     - **quarkus-jdbc-postgresql:** A JDBC driver that allows the application to interact with PostgreSQL databases.
 3. **Lombok**
     - **lombok:** A utility library that reduces boilerplacte code (e.g. getters, setters, constructors) by using annotations. It helps improve code readability and maintainability.
+
+### Dependency Management
+- **quarkus-bom:** The Quarkus BOM (Bill of Materials) manages the versions of all Quarkus-related dependencies to ensure compatibility.
+
+## Related Repositories
+
+This project is part of a larger system, consisting of multiple repositories that work together to provide a complete smart energy management solution:
+1. **[Smart Living Android Kotlin App:](https://github.com/ApostolisSiampanis/Smart_Living)** This repository contains the source code for an Android application designed to manage and monitor smart devices within a user's environment. Developed in Kotlin, the application adheres to Clean Architecture principles, ensuring a clear separation of conserns, maintainability and testability. It leverages Jetpack Compose to create a modern, responsive user interface that enhances user experience through efficient device control and real-time energy monitoring.
+2.  **[Smart Living Server:](https://github.com/ApostolisSiampanis/Smart_Living_Server)** This repository contains the server-side logic for managing backend operations in the Smart Living system. It integrates with Firebase services, including Firestore, Realtime Database, Firebase Authentication and implements various HTTP and scheduled functions to facilitate user data management, device power consumption monitoring and historical data handling. The server functions are designed to support real-time interactions and periodic maintenance of smart device data, enhancing system reliability and user experience.
 
 ## License
 
