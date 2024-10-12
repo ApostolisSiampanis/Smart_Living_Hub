@@ -17,15 +17,15 @@ The Smart_Living_Hub repository contains a Java-based hub simulation that mimics
 The Smart_Living_Hub project relies on several essential libraries and frameworks, each serving a specific role in building the application. Below is a summary of the main dependencies used in this project:
 
 ### Core Dependencies
-1. **Quarkus Framework**
+- **Quarkus Framework**
     - **quarkus-rest:** Provides RESTful APIs, enabling the application to expose endpoints for device interactions.
     - **quarkus-rest-jackson:** Adds support for JSON serialization and deserialization using Jackson.
     - **quarkus-hibernate-orm-panache:** Simplifies database interactions and ORM mapping using Panache with Hibernate.
     - **quarkus-hibernate-validator:** Intregrates validation features (e.g. input validation) within the application.
     - **quarkus-arc:** Provides dependency injection support essential for building loosely coupled services in Quarkus.
-2. **PostgreSQL**
+- **PostgreSQL**
     - **quarkus-jdbc-postgresql:** A JDBC driver that allows the application to interact with PostgreSQL databases.
-3. **Lombok**
+- **Lombok**
     - **lombok:** A utility library that reduces boilerplacte code (e.g. getters, setters, constructors) by using annotations. It helps improve code readability and maintainability.
 
 ### Dependency Management
