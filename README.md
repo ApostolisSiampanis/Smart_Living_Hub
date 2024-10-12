@@ -31,6 +31,14 @@ The Smart_Living_Hub project relies on several essential libraries and framework
 ### Dependency Management
 - **quarkus-bom:** The Quarkus BOM (Bill of Materials) manages the versions of all Quarkus-related dependencies to ensure compatibility.
 
+## PostgreSQL Diagram
+
+![Database Diagram](./images/postgres_database.png)
+
+## Application Diagram
+
+![Application Diagram](./images/program_diagram.png)
+
 ## Related Repositories
 
 This project is part of a larger system, consisting of multiple repositories that work together to provide a complete smart energy management solution:
