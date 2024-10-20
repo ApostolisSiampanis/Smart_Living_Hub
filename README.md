@@ -35,6 +35,56 @@ The Smart_Living_Hub project relies on several essential libraries and framework
 
 ![PostgreSQL Schema](./images/postgres_database.png)
 
+## Setup Instructions
+
+1. Clone the Repository:
+
+    ```bash
+    git clone https://github.com/ApostolisSiampanis/Smart_Living_Hub.git
+    cd Smart_Living_Hub
+    ```
+
+2. Install Java and Maven:
+
+    - Ensure **Java 17** and **Maven** are installed on your machine.
+    - Verify installations:
+
+      ```bash
+      java -version
+      mvn -version
+      ```
+
+3. Set Up PostgreSQL
+
+    - Install and Configure PostgreSQL
+    - Create a new database
+  
+      ```sql
+      CREATE DATABASE smart_living_hub
+      ```
+
+4. Update Database Configuration:
+
+    Edit the `application.properties` file in `src/main/resources/` with your PostgreSQL connection details (username, password, and database URL).
+
+5. Build and Run the Application:
+
+    - Build the Quarkus application:
+
+       ```bash
+       ./mvnw clean package
+       ```
+
+    - Run the Quarkus development mode:
+  
+       ```bash
+       ./mvnw quarkus:dev
+       ```
+
+6. Access the Application:
+
+    The application will be available at `http://localhost:8080`.
+
 ## Application Diagram
 
 ![Application Diagram](./images/program_diagram.png)
