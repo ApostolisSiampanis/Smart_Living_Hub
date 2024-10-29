@@ -85,6 +85,10 @@ The Smart_Living_Hub project relies on several essential libraries and framework
 
     The application will be available at `http://localhost:8080`.
 
+## Documentation
+
+- Complete project details are available in the [Project Documentation](https://dione.lib.unipi.gr/xmlui/handle/unipi/16913).
+
 ## Application Diagram
 
 ![Application Diagram](./images/program_diagram.png)
